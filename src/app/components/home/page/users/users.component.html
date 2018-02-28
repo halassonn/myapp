@@ -1,0 +1,117 @@
+<app-loader></app-loader>
+<div class="page">
+  <div [className]="pageclass">
+    <div class="tabel-container">
+        <mat-table [dataSource]="dataSource" matSort>
+           <!-- Position Column -->
+           <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> id </mat-header-cell>
+              <mat-cell *matCellDef="let element" > {{element.id}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="nik">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Nik </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.userDetails.nik}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="nama">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Nama </mat-header-cell>
+                <mat-cell *matCellDef="let element" > {{element.userDetails.firstname}} </mat-cell>
+              </ng-container>
+              
+              <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.userDetails.email}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="jabatan">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Jabatan </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.userDetails.jabatan}} </mat-cell>
+                </ng-container>
+            
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef >Actions</mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <a mat-icon-button="" matTooltip="Detail" (click)="showDetail(row)"><i class="fa fa-eye text-info"></i></a>
+                <a mat-icon-button="" matTooltip="Hapus" (click)="hapusDataKantor(row)"><i class="fa fa-trash text-danger"></i></a>
+              </mat-cell>
+            </ng-container>
+  
+  
+              <mat-header-row *matHeaderRowDef="displayedColumns"
+                              class="bg-light custom-mat-header-row text-white"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;" class="mat-row-hover custom-mat-row text-white"></mat-row>
+          </mat-table>
+
+    </div>
+
+    <div class="side-container">
+
+        <mat-toolbar color="warn">
+            <mat-toolbar-row>
+              <h6 class="small">Data Kantor</h6>
+              <span class="toolbar-spacer"></span>
+              <button mat-icon-button="" (click)="closeside()">
+                <i class="fa fa-close"></i>
+              </button>
+            </mat-toolbar-row>
+          </mat-toolbar>
+            <div class="form-container" [formGroup]="formuser">
+                <mat-form-field>
+                    <mat-select placeholder="Kode Kantor" formControlName="selected_kd_kantor">
+                      <mat-option *ngFor="let dtk of datakantor" [value]="dtk.kodekantor">
+                        {{ dtk.kodekantor }} || {{dtk.namakantor}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                            
+                  
+                <mat-form-field>
+                    <input matInput placeholder="Nik" formControlName="nik">
+                  </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Nama depan" formControlName="firstname">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Nama Belakang" formControlName="lastname">
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput placeholder="Email" formControlName="email"></textarea>
+                  </mat-form-field>
+                  <mat-form-field>
+                      <input matInput placeholder="Jabatan" formControlName="jabatan">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Username" formControlName="username">
+                      </mat-form-field>
+                      <mat-form-field [className]="password" >
+                          <input   matInput placeholder="Password" formControlName="password">
+                        </mat-form-field>
+                        <mat-form-field [className]="password" >
+                            <input  matInput placeholder="Ulang Password" formControlName="password2">
+                          </mat-form-field>
+                    
+
+                    <div class="button-container mt-4">
+                        <button mat-raised-button class="mr-2">Simpan</button>
+                        <button mat-raised-button (click)="batal()">batal</button>
+                    </div>
+              </div>
+    </div>
+
+  </div>
+  <mat-toolbar>
+      <mat-toolbar-row>
+        <mat-paginator #paginator
+                       [length]="usersDB.data.length"
+                       [pageIndex]="0"
+                       [pageSize]="10"
+                       [pageSizeOptions]="[5, 10, 25, 100]" class="bg-transparent" >
+        </mat-paginator>
+        <span class="toolbar-spacer"></span>
+  
+        <button mat-icon-button="" (click)="openside()">
+          <i class="fa fa-lg fa-user-plus"></i>
+        </button>
+  
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>

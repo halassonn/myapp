@@ -1,0 +1,27 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-container > * {
+    width: 100%;
+  }
+  
+.mat-table {
+    height: 100%;
+    padding-top: 56px;
+  }
+  .mat-header-row{
+    position: fixed;
+    top: 64px;
+    min-width: 75%
+  }
+  .tabel-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    overflow: auto;
+  }
+  .pass-hidden{
+    display: none !important;
+  }

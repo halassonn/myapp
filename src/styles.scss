@@ -1,0 +1,235 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/myanimation";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../node_modules/font-awesome/css/font-awesome.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+html, body {
+  margin: 0;
+  padding: 0;
+
+  height: 100%;
+}
+
+.toolbar-spacer {
+  flex: 1 2 auto;
+}
+
+mat-sidenav-container {
+  height: 100%;
+  width: 100%;
+}
+.mat-drawer-container{
+  background-color: transparent;
+}
+.mat-drawer{
+  background-color: #56baed;
+}
+
+.img-ul-button{
+  width: 100% !important;
+}
+label.img-ul-upload.img-ul-button{
+  font-size: 12px ;
+  text-align: center !important;
+}
+
+label.img-ul-clear.img-ul-button.ng-star-inserted{
+  visibility: hidden;
+  height: 0px;
+}
+div.img-ul-file-upload.img-ul-hr-inline-group{
+  padding: 0px !important;
+  min-height: 0px !important;
+}
+
+div.img-ul-container.img-ul-hr-inline-group.ng-star-inserted{
+  padding: 0px !important;
+  background: transparent !important;
+}
+div.img-ul-image.ng-star-inserted {
+  background: center center no-repeat;
+  background-size: contain;
+  display: inline-block;
+  float: left;
+  height: 250px;
+  margin: 6px;
+  position: relative;
+  width: 215px;
+}
+
+simple-snack-bar.mat-simple-snackbar.mat-simple-snackbar-action{
+  color: white;
+}
+
+snack-bar-container.success-snackbar {
+  //background-color: #2ecc71;
+  border: #2ecc71 solid 1px;
+}
+.success-snackbar .mat-simple-snackbar {
+  //color: #0f4c29;
+  color: #2ecc71;
+}
+
+snack-bar-container.error-snackbar {
+  border: red solid 1px;
+}
+.error-snackbar .mat-simple-snackbar {
+  color:red;
+}
+
+.mat-table{
+  overflow: auto;
+  max-height:100vh;
+  background-color: rgba(255,255,255,0.5);
+}
+
+.page{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.page-container, .page-container-full{
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.3);
+  height : 100%;
+
+.tabel-container{
+  display: flex;
+  flex-direction: column;
+  min-width: 75%;
+}
+ .tabel-container .mat-header-row{
+  position: fixed;
+  top: 64px;
+  min-width: 75%
+}
+
+.side-container{
+display:flex;
+flex-direction: column;
+background-color:rgba(109, 180, 187, 0.5);
+overflow-y: auto;
+width: 25%;
+}
+  .side-header{
+    display: flex;
+
+    background-color: #56baed;
+    width: 100%;
+    text-align: right;
+
+  }
+.side-container > * {
+  width: 100%;
+}
+.button-container{
+display: inline;
+}
+
+}
+
+
+//full container
+
+.page-container-full .tabel-container{
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+}
+.page-container-full .tabel-container .mat-header-row{
+  min-width: 100%;
+  position: fixed;
+  top: 64px;
+}
+.page-container-full .side-container{
+  display: none;
+}
+
+.form-container{
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  padding-right: 15px;
+}
+
+.dialog{
+  z-index: 1000;
+  right: 0;
+  left: 0;
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  min-height: 150px;
+  border: 1px solid #888;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+.dialog .dialog-header {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  background: blue;
+  height: 32px;
+  padding: 3px;
+}
+
+.dialog .dialog-body {
+  display: block;
+  flex-direction: column;
+  padding: 10px 10px;
+  height: 100%;
+  width: auto;
+}
+
+.dialog-form{
+  z-index: 1000;
+  right: 0;
+  left: 0;
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  min-height: 150px;
+  border: 1px solid #888;
+  max-width: 1024px;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+
+.dialog-form .dialog-form-body {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.dialog-form .dialog-form-body .dialog-form-container {
+  max-width: 450px;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  width: 100%;
+}
+.dialog-form-container > * {
+  width: 100%;
+}
+
+.mat-divider {
+  border-top-width: 2px !important;
+  border-top-style: dashed !important;
+  border: deepskyblue;
+}
+
+
+

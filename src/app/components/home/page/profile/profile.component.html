@@ -1,0 +1,412 @@
+<div class="page">
+<div [className]="pageclass">
+  <div class="tabel-container">
+      <mat-table  [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="nik">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Nik </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nik}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="nama">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Nama </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nama}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="jenkel">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> JK </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.jenkel}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="tempatlahir">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> T/Lahir </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.tempatlahir}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="jabatan">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Jabatan </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.jabatan}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="statuskaryawan">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Sts Karyawan </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.statuskaryawan}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef >Actions</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <a mat-icon-button="" matTooltip="Detail" (click)="showDetail(row)"><i class="fa fa-eye text-info"></i></a>
+            <a mat-icon-button="" matTooltip="Hapus" (click)="onDelete(row)"><i class="fa fa-trash text-danger"></i></a>
+          </mat-cell>
+        </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"
+                          class="bg-light custom-mat-header-row text-white"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" class="mat-row-hover custom-mat-row text-white"></mat-row>
+        </mat-table>
+  </div>
+  <div class="side-container">
+    <mat-toolbar color="warn">
+      <mat-toolbar-row>
+        <h6 class="small">Data Karyawan</h6>
+        <span class="toolbar-spacer"></span>
+        <button mat-icon-button="" (click)="closeside()">
+          <i class="fa fa-close"></i>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+      <!--<div class="form-container" [formGroup]="formaddkaryawan">
+          
+            <mat-form-field>
+              <input  matInput placeholder="NIK" [(value)]="nik" formControlName="nik">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Nama" formControlName="nama">
+            </mat-form-field>
+            <mat-form-field>
+                   <input matInput placeholder="Tempat Lahir" formControlName="tempatlahir" >
+              </mat-form-field>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker"
+                       placeholder="Tanggal Lahir"
+                       formControlName="tgllahir"
+                       required
+                       (dateChange)="doSomething($event)"
+                       >
+                <mat-datepicker-toggle matSuffix [for]="picker"  ></mat-datepicker-toggle>
+                <mat-datepicker touchUi="true" #picker ></mat-datepicker>
+              </mat-form-field> 
+             
+            <mat-form-field >
+                <mat-select placeholder="Jenis Kelamin" formControlName="jenkel">
+                  <mat-option value="L">Laki-laki</mat-option>
+                  <mat-option value="P">Perempuan</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Agama" formControlName="agama">
+                <mat-option value="Budha">Budha</mat-option>
+                <mat-option value="Hindu">Hindu</mat-option>
+                <mat-option value="Islam">Islam</mat-option>
+                <mat-option value="Katolik">Katolik</mat-option>
+                <mat-option value="Kristen Protestan">Kristen Protestan</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Status"  formControlName="status">
+                <mat-option value="K0">K0-Kawin</mat-option>
+                <mat-option value="K1">K1-Kawin Anak Satu</mat-option>
+                <mat-option value="K2">K2-Kawin Anak Dua</mat-option>
+                <mat-option value="K3">K3-Kawin Anak Tiga</mat-option>
+                <mat-option value="TK">TK-Tidak Kawin</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Alamat" formControlName="alamat"></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Jabatan" formControlName="jabatan">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Status Karyawan" formControlName="statuskaryawan">
+                  <mat-option value="Honor">Honor</mat-option>
+                  <mat-option value="Magang">Magang</mat-option>
+                  <mat-option value="Karyawan Tetap">Karyawan Tetap</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <image-upload
+            [max]="1"
+            [buttonCaption]="'Choose Photo'"
+            [dropBoxMessage]="''"
+            [extensions]="['jpg','jpeg','png']"
+            [preview]="true"
+            (uploadFinished)="imageUploaded($event)"
+            (removed)="imageRemove($event)"
+          >
+
+          </image-upload>
+            <div class="button-container mb-3 mt-5">
+                <button mat-raised-button="" class=" mr-3" color="primary" (click)="savedata(formaddkaryawan)">Simpan</button>
+      <button mat-raised-button="" color="warn">Batal</button>
+            </div>
+      </div> -->
+  </div>
+  </div>
+
+<mat-toolbar>
+    <mat-toolbar-row>
+      <mat-paginator #paginator
+                     [length]="profileDB.data.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 25, 100]" class="bg-transparent" >
+      </mat-paginator>
+      <span class="toolbar-spacer"></span>
+
+      <button mat-icon-button="" (click)="openformkaryawan()">
+        <i class="fa fa-lg fa-user-plus"></i>
+      </button>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+
+
+<!-- MODAL -->
+<app-mymodal
+  [(visiblekah)]="showformadd">
+  <div class="dialog-form" >
+    <mat-toolbar color="primary" style="height: 32px; padding-left: 2px; padding-right: 2px">
+      <h5><i class=" ml-2 mr-1 fa fa-user-plus"></i>&nbsp;Add Karyawan</h5>
+      <span class="toolbar-spacer"></span>
+      <button mat-icon-button="" class="pull-right" (click)="showformadd = !showformadd"><i class="fa fa-close"></i></button>
+    </mat-toolbar>
+
+    <div class="dialog-form-body" [formGroup]="formaddkaryawan">
+   
+        
+          <div class="dialog-form-container">
+                <image-upload
+                [max]="1"
+                [buttonCaption]="'Choose Photo'"
+                [dropBoxMessage]="''"
+                [extensions]="['jpg','jpeg','png']"
+                [preview]="true"
+                (uploadFinished)="imageUploaded($event)"
+                (removed)="imageRemove($event)" 
+                required
+              >      
+            </image-upload>
+            </div>
+            <div class="dialog-form-container">
+                <mat-form-field>
+                    <input  matInput placeholder="NIK" [(value)]="nik" formControlName="nik">
+                  </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Nama" formControlName="nama" required>
+                  </mat-form-field>
+                 <mat-form-field>
+                    <input matInput placeholder="Tempat Lahir" formControlName="tempatlahir" required>
+               </mat-form-field>
+               <mat-form-field>
+                  <input matInput [matDatepicker]="picker"
+                         placeholder="Tanggal Lahir"
+                         formControlName="tgllahir"
+                         required
+                         (dateChange)="doSomething($event)"
+                         >
+                  <mat-datepicker-toggle matSuffix [for]="picker"  ></mat-datepicker-toggle>
+                  <mat-datepicker touchUi="true" #picker ></mat-datepicker>
+                </mat-form-field> 
+               
+              <mat-form-field >
+                  <mat-select placeholder="Jenis Kelamin" formControlName="jenkel" required>
+                    <mat-option value="L">Laki-laki</mat-option>
+                    <mat-option value="P">Perempuan</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-select placeholder="Agama" formControlName="agama" required>
+                      <mat-option value="Budha">Budha</mat-option>
+                      <mat-option value="Hindu">Hindu</mat-option>
+                      <mat-option value="Islam">Islam</mat-option>
+                      <mat-option value="Katolik">Katolik</mat-option>
+                      <mat-option value="Kristen Protestan">Kristen Protestan</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field>
+                      <textarea matInput placeholder="Alamat" formControlName="alamat" required></textarea>
+                  </mat-form-field>
+                    
+              </div>
+              <div class="dialog-form-container">
+                 
+                  <mat-form-field>
+                      <mat-select placeholder="Pendidikan" required >
+                        <mat-option value="SMA">SMA</mat-option>
+                        <mat-option value="D3">D3</mat-option>
+                        <mat-option value="S1">S1</mat-option>
+                        <mat-option value="S2">S2</mat-option>
+                        <mat-option value="S3">S3</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+                  <mat-form-field>
+                      <mat-select placeholder="Status"  formControlName="status" required>
+                        <mat-option value="K0">K0-Kawin</mat-option>
+                        <mat-option value="K1">K1-Kawin Anak Satu</mat-option>
+                        <mat-option value="K2">K2-Kawin Anak Dua</mat-option>
+                        <mat-option value="K3">K3-Kawin Anak Tiga</mat-option>
+                        <mat-option value="TK">TK-Tidak Kawin</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    
+                   
+
+                    
+                    <mat-divider class="mt-2 mb-2" ></mat-divider>
+                   
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="tglmasuk"
+                               placeholder="Tanggal Masuk"
+                               formControlName="tglmasuk"
+                               required
+                               (dateChange)="getmasakerja($event)"
+                               >
+                        <mat-datepicker-toggle matSuffix [for]="tglmasuk"  ></mat-datepicker-toggle>
+                        <mat-datepicker touchUi="true" #tglmasuk ></mat-datepicker>
+                      </mat-form-field> 
+                      <span style="display:inline;">
+                       
+                                       
+                    <label class="text-info">Masa Kerja {{ masakerjath }} Tahun {{masakerjabl}} bulan</label>
+               
+                      </span>
+                      
+
+                      <mat-form-field>
+                          <input matInput placeholder="Jabatan" formControlName="jabatan" required>
+                      </mat-form-field>
+                      <mat-form-field>
+                          <mat-select placeholder="Status Karyawan" formControlName="statuskaryawan" required>
+                              <mat-option value="Honor">Honor</mat-option>
+                              <mat-option value="Magang">Magang</mat-option>
+                              <mat-option value="Karyawan Tetap">Karyawan Tetap</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+              </div>
+  
+
+    </div>
+    <mat-toolbar style="height: 45px">
+      <span class="toolbar-spacer"></span>
+      <button mat-raised-button="" (click)="savedata(formaddkaryawan)" color="primary" class="mr-2 inverse">Simpan</button>
+      <button mat-raised-button="">Batal</button>
+    </mat-toolbar>
+  </div>
+
+</app-mymodal>
+
+
+<!-- MODAL -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal
+<app-mymodal [(visiblekah)]="addform" [formGroup]="formaddkaryawan">
+  <div id="addgajicontent">
+    <div class="dialog-header">
+      <mat-toolbar color="primary">
+        <h4><i class="fa fa-user-plus"></i>&nbsp;Add Data Karyawan</h4>
+        <span class="toolbar-spacer"></span>
+        <button (click)="addform = !addform" mat-icon-button=""><i class="fa fa-close"></i></button>
+      </mat-toolbar>
+    </div>
+    <div class="dialog-body">
+      <div class="row">
+        <div class="col-sm col-md-6 ">
+          <div class="form-container">
+            <mat-form-field>
+              <input matInput placeholder="NIK" formControlName="nik">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Nama" formControlName="nama">
+            </mat-form-field>
+            <div>
+              <mat-form-field>
+                <span>
+                   <input matInput placeholder="Tempat Lahir" formControlName="tempatlahir">
+                </span>
+              </mat-form-field>
+
+
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker"
+                       placeholder="Choose a date"
+                       formControlName="tgllahir"
+                       required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi="true" #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <label> <b>Jenis Kelamin :</b> </label>
+            <mat-radio-group >
+              <mat-radio-button value="Laki-laki" >Laki-Laki</mat-radio-button> &nbsp;
+              <mat-radio-button value="Perempuan">Perempuan</mat-radio-button>
+            </mat-radio-group>
+
+            <mat-form-field>
+              <mat-select placeholder="Agama" [(value)]="profile.agama">
+                <mat-option value="Budha">Budha</mat-option>
+                <mat-option value="Hindu">Hindu</mat-option>
+                <mat-option value="Islam">Islam</mat-option>
+                <mat-option value="Katolik">Katolik</mat-option>
+                <mat-option value="Kristen Protestan">Kristen Protestan</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Status" [(value)]="profile.status">
+                <mat-option value="K0">K0-Kawin</mat-option>
+                <mat-option value="K1">K1-Kawin Anak Satu</mat-option>
+                <mat-option value="K2">K2-Kawin Anak Dua</mat-option>
+                <mat-option value="K3">K3-Kawin Anak Tiga</mat-option>
+                <mat-option value="TK">TK-Tidak Kawin</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+        </div>
+        <div class="col-sm col-md-6 ">
+          <image-upload
+            [max]="1"
+            [buttonCaption]="'Choose Photo'"
+            [dropBoxMessage]="''"
+            [extensions]="['jpg','jpeg','png']"
+            [preview]="true"
+            (uploadFinished)="imageUploaded($event)"
+            (removed)="imageRemove($event)"
+          >
+
+          </image-upload>
+
+          <div class="form-container">
+            <mat-form-field>
+              <textarea matInput placeholder="Alamat" formControlName="alamat"></textarea>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Jabatan" formControlName="jabatan">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Status Karyawan" [(value)]="profile.statuskaryawan">
+                <mat-option value="Honor">Honor</mat-option>
+                <mat-option value="Magang">Magang</mat-option>
+                <mat-option value="Karyawan Tetap">Karyawan Tetap</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <mat-toolbar color="basic">
+      <span class="toolbar-spacer"></span>
+      <button mat-raised-button="" class=" mr-3" color="primary" (click)="savedata()">Simpan</button>
+      <button mat-raised-button="" color="warn">Batal</button>
+    </mat-toolbar>
+
+  </div>
+</app-mymodal>
+-->

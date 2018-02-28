@@ -1,0 +1,33 @@
+{
+    "productName": "sipek2",
+    "directories": {
+      "app": "dist",
+      "output": "app-builds"
+    },
+    "win": {
+      "icon": "dist/favicon",
+      "target": ["portable", "NSIS"],
+      "publish":[
+        {
+          "provider":"github",
+          "repo":"sipek2",
+          "owner":"halassonn",
+          "token": "314ca26879f076cf233969352844cd8980eeece8"
+        }
+      ]
+  
+    },
+  
+    "mac": {
+      "icon": "dist/favicon",
+      "target": ["dmg"]
+  
+    },
+    "linux": {
+      "icon": "dist",
+      "target": [
+        "AppImage"
+      ]
+    }
+  }
+  

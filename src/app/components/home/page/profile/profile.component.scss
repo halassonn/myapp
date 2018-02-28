@@ -1,0 +1,51 @@
+
+
+
+
+#addgajicontent {
+  z-index: 1000;
+  right: 0;
+  left: 0;
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  min-height: 450px;
+  padding: 40px 0px 0px 0px;
+  border: 1px solid #888;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+
+.mat-table {
+  height: 100%;
+  padding-top: 56px;
+}
+.mat-header-row{
+  position: fixed;
+  top: 64px;
+  min-width: 75%
+}
+.tabel-container{
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  overflow: auto;
+}
+
+/*.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}*/
+
+
+.mat-column-select {
+  overflow: visible;
+}

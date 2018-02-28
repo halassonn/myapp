@@ -1,0 +1,25 @@
+<app-loader></app-loader>
+<div class="mat-card">
+  <div class="card-body">
+    <form [formGroup]="formLogin">
+      <div class="form-container">
+        <mat-form-field>
+          <span matPrefix=""><i class="fa fa-user fa-lg"></i>&nbsp;</span>
+          <input matInput placeholder="Username" type="text" formControlName="username" required>
+        </mat-form-field>
+        <mat-form-field>
+          <span matPrefix=""><i class="fa fa-key fa-lg"></i>&nbsp;</span>
+          <input matInput placeholder="Password" type="password" formControlName="password" required>
+        </mat-form-field>
+
+        <br>
+
+        <button mat-raised-button="" color="primary" (click)="login(formLogin.value)" class="mt-3">Login</button>
+        <br>
+        <button mat-raised-button="" class="mt-3" routerLink="/">Cancel</button>
+
+      </div>
+    </form>
+
+  </div>
+</div>

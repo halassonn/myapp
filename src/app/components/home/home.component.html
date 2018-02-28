@@ -1,0 +1,61 @@
+<div class="mainContainer">
+  <mat-sidenav-container #sidenav>
+    <mat-toolbar class="" color="primary">
+      <span>
+          <button mat-icon-button="" class="btnSidenav" (click)="sidenav.open()">
+              <i class="fa fa-list"></i>
+          </button>
+      </span>
+      <span class="toolbar-spacer"></span>
+      <span><h2>SIPEK</h2></span>
+      <span class="toolbar-spacer"></span>
+
+      <button mat-icon-button="" [matMenuTriggerFor]="userMenu" matTooltip="{{username}}" >
+        <i class="fa fa-user-circle fa-lg"></i>
+        <!-- <span matPrefix="">&nbsp;{{username}}</span> -->
+        <span matSuffix="">&nbsp;<i class="fa fa-chevron-circle-down"></i></span>
+      </button>
+
+
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item="" routerLink="/profil"><i class="fa fa-lg fa-user"></i>
+          <span matPrefix="">&nbsp;{{username}}</span></button>
+        <button mat-menu-item="" (click)="logout()"><i class="fa fa-lg  fa-power-off"></i> &nbsp;Logout</button>
+      </mat-menu>
+
+    </mat-toolbar>
+
+    <mat-sidenav mode="over" #sidenav class="bg-primary">
+      <mat-list>
+        <mat-list-item class="mt-3">
+          <button mat-icon-button="" routerLink="/home"  (click)="sidenav.close()">
+            <span><i class="fa fa-lg fa-inverse fa-home" matTooltip="DashBoard"></i></span>
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+            <button mat-icon-button="" (click)="sidenav.close()" routerLink="/users">
+              <span><i class="fa fa-lg fa-inverse fa-users" matTooltip="Users" ></i></span>
+            </button>
+          </mat-list-item>
+        <mat-list-item>
+          <button mat-icon-button="" (click)="sidenav.close()" routerLink="/datakantor">
+            <span><i class="fa fa-lg fa-inverse fa-bank" matTooltip="Data Kantor" ></i></span>
+          </button>
+        </mat-list-item>
+        <mat-list-item class="mt-3" >
+          <button mat-icon-button=""  routerLink="/profile"  (click)="sidenav.close()"><span><i
+            class="fa  fa-lg fa-inverse fa-user-o" matTooltip="Data Pegawai"></i></span></button>
+        </mat-list-item >
+        <mat-list-item class="mt-3" >
+          <button mat-icon-button=""  routerLink="/penggajian"  (click)="sidenav.close()"><span><i
+            class="fa  fa-lg fa-inverse fa-money" matTooltip="Penggajian"></i></span></button>
+        </mat-list-item >
+
+      </mat-list>
+    </mat-sidenav>
+    <div id="content-layout">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+
+</div>

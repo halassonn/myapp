@@ -1,0 +1,54 @@
+.data-table-row {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.example-container {
+  display: inline;
+  min-width: 300px;
+}
+
+
+.mat-table {
+  height: 100%;
+  padding-top: 56px;
+}
+
+.tabel-container{
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  overflow: auto;
+ 
+}
+
+.mat-column-select {
+  overflow: visible;
+}
+
+.dialog-header {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  position: absolute;
+}
+.dialog-body {
+  display: block;
+  flex-direction: column;
+  padding: 32px 20px;
+  height: 100%;
+  width: auto;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container > * {
+  width: 100%;
+}
