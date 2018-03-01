@@ -18,7 +18,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/halassonn/diorihrd.git"
+    "url": "git+https://github.com/halassonn/myapp.git"
   },
   "scripts": {
     "ng": "ng",
