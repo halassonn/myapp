@@ -2,13 +2,22 @@ import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
 
 const {autoUpdater} = require('electron-updater');
-
-
+const {appUpdater} = require('./autoupdater');
+const isDev = require('electron-is-dev');
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
 import * as url from 'url';
 
+if (require('electron-squirrel-startup')) {
+	app.quit();
+}
+// Funtion to check the current OS. As of now there is no proper method to add auto-updates to linux platform.
+function isWindowsOrmacOS() {
+	return process.platform === 'darwin' || process.platform === 'win32';
+}
+
+/*
 //setup logger
 autoUpdater.logger=require('electron-log');
 autoUpdater.logger.transports.file.level='info';
@@ -35,7 +44,7 @@ autoUpdater.on('update-downloaded',(info)=>{
 });
 autoUpdater.on('error',(err)=>{
   console.error(err);
-});
+}); */
 
 if (serve) {
   require('electron-reload')(__dirname, {
@@ -99,6 +108,15 @@ try {
       createWindow();
     }
   });
+
+  const page = win.webContents;
+
+  page.once('did-frame-finish-load', () => {
+    const checkOS = isWindowsOrmacOS();
+    if (checkOS && !isDev) {
+      // Initate auto-updates on macOs and windows
+      appUpdater();
+    }});
 
 } catch (e) {
   // Catch Error

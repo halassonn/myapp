@@ -1,0 +1,8 @@
+version: 1.0.2
+files:
+  - url: sipek2-setup-1.0.2.exe
+    sha512: n2OLOjqDOZQwrEm2HJfpCTtjwmze4ke+TYnTT5dHMYIz4GncekxPsiS/cWoWGu4QcbUssiJTO5CnfA14jlGoXQ==
+path: sipek2-setup-1.0.2.exe
+sha512: n2OLOjqDOZQwrEm2HJfpCTtjwmze4ke+TYnTT5dHMYIz4GncekxPsiS/cWoWGu4QcbUssiJTO5CnfA14jlGoXQ==
+sha2: 9bb1dec59994142d3921050b7d4820c6457a14d04991cc0b5dc3313780c8c045
+releaseDate: '2018-03-01T12:03:26.478Z'
