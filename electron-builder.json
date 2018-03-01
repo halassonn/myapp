@@ -13,6 +13,7 @@
           "repo":"myapp",
           "owner":"halassonn",
           "token": "6db4dd006d7c552f53ecda7c67b547b7115f65d7",
+          "tags": true
 
         }
       ]
