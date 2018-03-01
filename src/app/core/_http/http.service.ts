@@ -93,6 +93,7 @@ export class HttpService extends Http {
   }
 
   private onCatch(error: any, caught: Observable<any>): Observable<any> {
+    //noinspection TypeScriptValidateTypes
     return Observable.throw(error);
   }
 

@@ -65,6 +65,6 @@ export class LoginComponent implements OnInit {
         this.snackBar.open(this.message, '', this.snackBarErrorConf);
       }
     );
-    this.router.navigateByUrl('/home');
+    //this.router.navigateByUrl('/home');
   }
 }

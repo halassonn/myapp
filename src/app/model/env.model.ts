@@ -17,7 +17,9 @@ export class EnvConf {
         return JSON.parse(alamat).alamat;
       }
     }*/
-    return 'http://localhost:8080/api/';
+    return 'http://localhost:8585/api/';
+    //return 'https://dioriapi.herokuapp.com/api/';
+    //return 'http://bprdiorigandapt.sytes.net:8585/diori-ganda-api/';
     //return 'http://192.168.88.52:8080/cvsatya-Adm-App/api/';
   }
 
