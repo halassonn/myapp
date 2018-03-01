@@ -10,7 +10,7 @@
       "publish":[
         {
           "provider":"github",
-          "repo":"sipek2",
+          "repo":"myapp",
           "owner":"halassonn",
           "token": "fe844d872c92774a1b07a5695a59eba4a89e0ecd"
         }
