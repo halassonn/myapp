@@ -9,19 +9,20 @@
       "target": ["portable", "NSIS"],
       "publish":[
         {
-          "provider":"github",
+          "provider":"release",
           "repo":"myapp",
           "owner":"halassonn",
-          "token": "ec0ca642cf3856f73553a980dea633aad32864db"
+          "token": "6db4dd006d7c552f53ecda7c67b547b7115f65d7",
+
         }
       ]
-  
+
     },
-  
+
     "mac": {
       "icon": "dist/favicon",
       "target": ["dmg"]
-  
+
     },
     "linux": {
       "icon": "dist",
@@ -30,4 +31,3 @@
       ]
     }
   }
-  
